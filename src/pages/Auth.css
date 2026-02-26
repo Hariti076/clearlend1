@@ -1,0 +1,31 @@
+/* Auth specific visual components */
+
+.auth-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.auth-orb-primary {
+    top: -10%;
+    left: -10%;
+    width: 60vh;
+    height: 60vh;
+    background: var(--primary-color);
+}
+
+.auth-orb-secondary {
+    bottom: -10%;
+    right: -10%;
+    width: 50vh;
+    height: 50vh;
+    background: var(--info);
+}
+
+.auth-card {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}

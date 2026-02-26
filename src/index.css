@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --background: 0.975 0.005 240;
+    --foreground: 0.18 0.04 255;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 255;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 255;
+    --primary: 0.22 0.07 255;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.94 0.02 200;
+    --secondary-foreground: 0.22 0.07 255;
+    --muted: 0.94 0.01 240;
+    --muted-foreground: 0.52 0.03 240;
+    --accent: 0.91 0.04 200;
+    --accent-foreground: 0.22 0.07 255;
+    --destructive: 0.58 0.22 27;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.88 0.02 240;
+    --input: 0.88 0.02 240;
+    --ring: 0.45 0.12 255;
+    --chart-1: 0.45 0.18 255;
+    --chart-2: 0.55 0.16 180;
+    --chart-3: 0.72 0.17 85;
+    --chart-4: 0.58 0.22 27;
+    --chart-5: 0.65 0.15 145;
+    --sidebar: 0.14 0.06 255;
+    --sidebar-foreground: 0.92 0.02 240;
+    --sidebar-primary: 0.55 0.16 180;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.22 0.07 255;
+    --sidebar-accent-foreground: 0.92 0.02 240;
+    --sidebar-border: 0.25 0.06 255;
+    --sidebar-ring: 0.55 0.16 180;
+    --navy-deep: 0.14 0.06 255;
+    --navy-mid: 0.22 0.07 255;
+    --teal-primary: 0.55 0.16 180;
+    --teal-light: 0.65 0.14 180;
+    --amber-accent: 0.72 0.17 85;
+    --red-risk: 0.58 0.22 27;
+    --success: 0.62 0.16 145;
+    --card-padding: 1.5rem;
+    --card-gap: 1.5rem;
+    --section-gap: 2rem;
+  }
+
+  .dark {
+    --background: 0.11 0.04 255;
+    --foreground: 0.93 0.02 240;
+    --card: 0.16 0.05 255;
+    --card-foreground: 0.93 0.02 240;
+    --popover: 0.19 0.05 255;
+    --popover-foreground: 0.93 0.02 240;
+    --primary: 0.55 0.16 180;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.22 0.06 255;
+    --secondary-foreground: 0.93 0.02 240;
+    --muted: 0.22 0.05 255;
+    --muted-foreground: 0.62 0.04 240;
+    --accent: 0.25 0.06 255;
+    --accent-foreground: 0.93 0.02 240;
+    --destructive: 0.62 0.22 27;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.05 255;
+    --input: 0.25 0.05 255;
+    --ring: 0.55 0.16 180;
+    --chart-1: 0.62 0.18 180;
+    --chart-2: 0.55 0.16 255;
+    --chart-3: 0.72 0.17 85;
+    --chart-4: 0.65 0.22 27;
+    --chart-5: 0.68 0.15 145;
+    --sidebar: 0.12 0.05 255;
+    --sidebar-foreground: 0.92 0.02 240;
+    --sidebar-primary: 0.55 0.16 180;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.22 0.06 255;
+    --sidebar-accent-foreground: 0.92 0.02 240;
+    --sidebar-border: 0.22 0.05 255;
+    --sidebar-ring: 0.55 0.16 180;
+    --navy-deep: 0.12 0.05 255;
+    --navy-mid: 0.18 0.06 255;
+    --teal-primary: 0.55 0.16 180;
+    --teal-light: 0.65 0.14 180;
+    --amber-accent: 0.72 0.17 85;
+    --red-risk: 0.62 0.22 27;
+    --success: 0.62 0.16 145;
+  }
+}
+
+@layer base {
+  * {
+    border-color: oklch(var(--border));
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: Inter, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .fintech-card {
+    border-radius: calc(var(--radius) + 4px);
+    border-width: 1px;
+    border-color: oklch(var(--border));
+    background-color: oklch(var(--card));
+    padding: var(--card-padding);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .fintech-card-compact {
+    border-radius: calc(var(--radius) + 4px);
+    border-width: 1px;
+    border-color: oklch(var(--border));
+    background-color: oklch(var(--card));
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: oklch(var(--card-foreground));
+  }
+
+  .metric-label {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: oklch(var(--muted-foreground));
+  }
+
+  .section-title {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: oklch(var(--card-foreground));
+  }
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: oklch(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: oklch(var(--muted-foreground) / 0.4);
+  }
+}
