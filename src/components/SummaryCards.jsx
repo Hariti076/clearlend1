@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Users, WalletCards, BadgeIndianRupee, Activity, ShieldCheck, PieChart } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const StatCard = ({ title, value, subtitle, icon: Icon, trend, colorClass }) => (
     <div className="card flex flex-col justify-between" style={{ height: '140px' }}>
@@ -22,7 +23,7 @@ const SummaryCards = () => {
     const [stats, setStats] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/stats')
+        fetch(`${API_BASE_URL}/api/stats`)
             .then(res => res.json())
             .then(data => setStats(data))
             .catch(err => console.error("Error fetching stats:", err));

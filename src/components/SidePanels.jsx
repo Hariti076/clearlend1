@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, ArrowRight, CircleCheck, AlertTriangle, IndianRupee } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export const PulsePanel = () => {
     const [pulse, setPulse] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/pulse')
+        fetch(`${API_BASE_URL}/api/pulse`)
             .then(res => res.json())
             .then(data => setPulse(data))
             .catch(console.error);
@@ -26,8 +27,8 @@ export const PulsePanel = () => {
                 {pulse.map((activity) => (
                     <div key={activity.id} className="flex gap-3 items-start p-3 rounded-md transition-colors" style={{ backgroundColor: 'var(--bg-main)' }}>
                         <div className={`p-2 rounded-full mt-1 ${activity.type === 'risk_alert' ? 'bg-error text-white' :
-                                activity.type === 'repayment' ? 'bg-success text-white' :
-                                    activity.type === 'loan_match' ? 'bg-primary text-white' : 'bg-warning text-white'
+                            activity.type === 'repayment' ? 'bg-success text-white' :
+                                activity.type === 'loan_match' ? 'bg-primary text-white' : 'bg-warning text-white'
                             }`}>
                             {activity.type === 'risk_alert' ? <AlertTriangle size={14} /> :
                                 activity.type === 'repayment' ? <CircleCheck size={14} /> :
@@ -57,8 +58,8 @@ export const SideSnapshotPanel = () => {
     const [lenders, setLenders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/users/borrowers').then(res => res.json()).then(setBorrowers).catch(console.error);
-        fetch('http://localhost:3000/api/users/lenders').then(res => res.json()).then(setLenders).catch(console.error);
+        fetch(`${API_BASE_URL}/api/users/borrowers`).then(res => res.json()).then(setBorrowers).catch(console.error);
+        fetch(`${API_BASE_URL}/api/users/lenders`).then(res => res.json()).then(setLenders).catch(console.error);
     }, []);
 
     return (

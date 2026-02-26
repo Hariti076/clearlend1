@@ -5,6 +5,7 @@ import {
     Legend, ResponsiveContainer
 } from 'recharts';
 import { useTheme } from '../context/ThemeContext';
+import { API_BASE_URL } from '../config';
 
 const ChartsSection = () => {
     const { theme } = useTheme();
@@ -20,10 +21,10 @@ const ChartsSection = () => {
 
     useEffect(() => {
         Promise.all([
-            fetch('http://localhost:3000/api/loans/trend').then(res => res.json()),
-            fetch('http://localhost:3000/api/loans/emi').then(res => res.json()),
-            fetch('http://localhost:3000/api/loans/risk').then(res => res.json()),
-            fetch('http://localhost:3000/api/users/participation').then(res => res.json())
+            fetch(`${API_BASE_URL}/api/loans/trend`).then(res => res.json()),
+            fetch(`${API_BASE_URL}/api/loans/emi`).then(res => res.json()),
+            fetch(`${API_BASE_URL}/api/loans/risk`).then(res => res.json()),
+            fetch(`${API_BASE_URL}/api/users/participation`).then(res => res.json())
         ]).then(([d, e, r, p]) => {
             setDisbursementData(d);
             setEmiData(e);
