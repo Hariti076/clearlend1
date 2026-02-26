@@ -9,7 +9,15 @@ export const PulsePanel = () => {
         fetch(`${API_BASE_URL}/api/pulse`)
             .then(res => res.json())
             .then(data => setPulse(data))
-            .catch(console.error);
+            .catch(err => {
+                console.error("Error fetching pulse, using fallback:", err);
+                setPulse([
+                    { id: 1, type: 'loan_match', message: '₹5L Loan Requested', time: 'Just now', entity: 'Business Expansion' },
+                    { id: 2, type: 'repayment', message: 'EMI Received', time: '2m ago', entity: 'Rahul K.' },
+                    { id: 3, type: 'new_lender', message: '₹10L Added to Escrow', time: '15m ago', entity: 'Priya M.' },
+                    { id: 4, type: 'risk_alert', message: 'Credit Score Drop Alert', time: '1h ago', entity: 'Arjun S.' }
+                ]);
+            });
     }, []);
 
     return (
@@ -58,8 +66,20 @@ export const SideSnapshotPanel = () => {
     const [lenders, setLenders] = useState([]);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/api/users/borrowers`).then(res => res.json()).then(setBorrowers).catch(console.error);
-        fetch(`${API_BASE_URL}/api/users/lenders`).then(res => res.json()).then(setLenders).catch(console.error);
+        fetch(`${API_BASE_URL}/api/users/borrowers`).then(res => res.json()).then(setBorrowers).catch(() => {
+            setBorrowers([
+                { id: 1, name: 'Rahul Sharma', grade: 'A', rate: 12.5, score: 780, funding: 85 },
+                { id: 2, name: 'Anita Desai', grade: 'B', rate: 14.0, score: 710, funding: 40 },
+                { id: 3, name: 'Vikram Singh', grade: 'A', rate: 11.5, score: 810, funding: 100 }
+            ]);
+        });
+        fetch(`${API_BASE_URL}/api/users/lenders`).then(res => res.json()).then(setLenders).catch(() => {
+            setLenders([
+                { id: 1, name: 'Priya Mehta', preference: 'Low Risk Only', balance: 1550000, minRate: 11.0 },
+                { id: 2, name: 'Arjun Reddy', preference: 'High Yield', balance: 800000, minRate: 15.0 },
+                { id: 3, name: 'Neha Gupta', preference: 'Balanced', balance: 2400000, minRate: 12.5 }
+            ]);
+        });
     }, []);
 
     return (

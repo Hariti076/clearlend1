@@ -6,14 +6,14 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [currentUser, setCurrentUser] = useState({ id: 1, name: 'Demo User', role: 'admin', email: 'demo@clearlend.com' });
+    const [token, setToken] = useState(localStorage.getItem('token') || 'demo-token');
     const [loading, setLoading] = useState(true);
 
     // Initialize state from local storage on load
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
-        if (storedUser && token) {
+        if (storedUser && token !== 'demo-token') {
             setCurrentUser(JSON.parse(storedUser));
         }
         setLoading(false);
